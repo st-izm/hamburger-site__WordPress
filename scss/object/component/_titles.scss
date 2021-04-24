@@ -1,0 +1,77 @@
+.c-titles {
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   
+   /* Header
+   ----------------------------------------------------------------- */
+
+   &--header {
+      margin-left: 4.0%;
+      float: left;
+      font-size: 6.5rem;
+      color: $gray;
+      @include tab {
+         font-size: 5.3rem;
+      }
+      @include sp {
+         font-size: 4.0rem;
+      }
+   }
+
+   
+
+   /* SideMenu
+      ----------------------------------------------------------------- */
+   &--menuTop {
+      font-size: 3.3rem;
+      color: $gray;
+      @include tab {
+         display: none;
+      }
+   }
+
+   /* Main
+   ----------------------------------------------------------------- */
+   &--mainTop {
+      margin-left: 5%;
+      font-size: 3.0rem;
+      color: $index-topTitle;
+      @include sp {
+         font-size: 2.0rem;
+     }
+   }
+
+   &--front-page-card {
+      margin: 3% 0 5% 5%;
+      font-size: 5.0rem;
+      color: $index-cardTitle;
+   }
+
+   &--archiveTop {
+      display: inline;
+      margin-left: 5%;
+      font-size: 5.0rem;
+      color: white;
+      @include tab {
+         font-size: 4.0rem;
+      }
+      @include sp {
+         margin-top: 60px;
+         font-size: 2.2rem;
+         display: block;
+         line-height: normal;
+      }
+      span {
+         
+         font-size: 2.8rem;
+         font-weight: bold;
+         color: white;
+         @include tab {
+            font-size: 2.3rem;
+         }
+         @include sp {
+            margin-left: 5%;
+            font-size: 1.5rem;
+         }
+      }
+   }
+}

@@ -1,0 +1,159 @@
+.p-single {
+    padding: 5% 5%;
+    color: $single-text-color;
+    h2, h3, h4, h5, h6, p, blockquote, div, ul, table, button {
+        margin: 4% 0;
+        @include sp {
+            margin: 6% 0;
+        }
+    }
+    h2 {
+        font-size: 4.0rem;
+    }
+    h3 {
+        font-size: 3.3rem;
+    }
+    h4 {
+        font-size: 2.8rem;
+    }
+    h5 {
+        font-size: 2.0rem;
+    }
+    h6 {
+        font-size: 1.5rem;
+    }
+    p {
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+    }
+    @include sp {
+        h2 {
+            font-size: 2.8rem;
+        }
+        h3 {
+                font-size: 2.6rem;
+        }
+        h4 {
+                font-size: 2.3rem;
+            }
+        h5 {
+                font-size: 1.7rem;
+        }
+        h6 {
+            font-size: 1.3rem;
+        }
+        p {
+            font-size: 1.0rem;
+        }
+    }
+    blockquote {
+        padding: 3%;
+        background-color: #F5F5F5;
+        @include sp {
+            p {
+                padding: 2%;
+            }
+        }
+    }
+    &__image {
+        &--wide {
+            width: 100%;
+        }
+        &--normal {
+            width: 50%;
+            display: block;
+            margin: 0 auto;
+            @include tab {
+                width: 80%;
+            }
+        }
+    }
+    table {
+        width: 100%;
+        tr {
+            height: 70px;
+            td {
+                padding-left: 4%;
+                line-height: 70px;
+                font-size: 1.4rem;
+                border: solid 1px #707070;
+                &:first-child {
+                    width: 30%;
+                }
+            }
+        }
+    }
+    button {
+        width: 40%;
+        height: 80px;
+        border: solid 1px #707070;
+        border-radius: 20px;
+        background: linear-gradient(#F2EDE9,#DED8D3);
+        @include tab {
+            width: 300px;
+        }
+        @include sp {
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+    &__twocolum {
+        margin: 4% 0;
+        display: flex;
+        flex-direction: row;
+        align-items:flex-start;
+        img {
+            width: 40%;
+            display: block;
+        }
+        p {
+            margin-top: 0;
+            padding: 0 3%;
+        }
+    }
+    &__grid {
+        margin: 4% 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        img {
+            width: 31%;
+            margin: 1%;
+            @include tab {
+                width: 47%;
+                margin: 1%;
+            }
+            @include sp {
+                width: 100%;
+                max-width: 500px;
+            }
+        }
+    }
+    &__list {
+        padding-left: 5%;
+        &__indent1 {
+            padding-left: 2%;
+        }
+        ul {
+            li {
+                font-size: 1.2rem;
+                @include sp {
+                    font-size: 1.0rem;
+                }
+            }
+        }
+    }
+    &__code {
+        padding-left: 4%;
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        background-color: #F5F5F5;
+        @include sp {
+            font-size: 1.1rem;
+            line-height: 1.2rem;
+        }
+    }
+}

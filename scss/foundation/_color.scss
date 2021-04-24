@@ -1,0 +1,58 @@
+/*
+共通レイアウトのヘッダー、サイドメニュー、フッターを先に記述し、
+続いてその他をhtmlファイル別に記述する。
+*/
+
+/* ------------------------------- */
+/* 全ページ共通レイアウトのカラー変数 */
+/* ------------------------------- */
+/* Main
+   ----------------------------------------------------------------- */
+$gray: #707070; // ヘッダーとサイドメニューの文字色
+$fade-bkg-color: rgba(0,0,0,0.8); // フェードレイヤーの色指定
+
+/* Header
+   ----------------------------------------------------------------- */
+$header-bkg-color: #FFF7EF;
+$searchButton-bkg-color: #F2EDE9;
+
+/* SideMenu
+   ----------------------------------------------------------------- */
+$sideMenu-bkg-color: #F2EDE9;
+
+/* Footer
+   ----------------------------------------------------------------- */
+$footer-text: white;
+
+
+
+/* ------------------------------- */
+/* index.html                      */
+/* ------------------------------- */
+// mainVisual
+$index-topTitle: white;
+// card
+$index-cardTitle: white;
+$index-card-text: #3C2A10;
+$index-card-explanation-bkg-color: rgba(255,255,255, 0.8);
+// map
+$map-bkg-color: rgba(00, 00, 00, 0.6);
+$map-description-bkg-color: rgba(00, 00, 00, 0.3);
+$map-description-color: white;
+
+
+/* ------------------------------- */
+/* archive.html                    */
+/* ------------------------------- */
+
+
+$archive-top-text-color: #3C2A10;
+$archive-bkg-color: #3C2B1C;
+$archive-text-color: white;
+$pager-text: #707070;
+
+/* ------------------------------- */
+/* single.html                     */
+/* ------------------------------- */
+
+$single-text-color: #3C2A10;

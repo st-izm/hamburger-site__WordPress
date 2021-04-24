@@ -1,0 +1,33 @@
+.l-footer {
+    height: 150px;
+    max-width: 100%;
+    text-align: center;
+    background-image: url( 'image/footer_image.png' );
+    background-size: cover;
+    &__sitemap {
+        padding: 40px 0;
+        color: $footer-text;
+        ul {
+            display: flex;
+            justify-content: center;
+            li {
+                font-size: 1.0rem;
+                a {
+                    padding: 5px;
+                    text-decoration: none;
+                    color: $footer-text;
+                }
+            }
+            /* メニュー同士の間に仕切り垂直線を入れるための隣接セレクタを利用した記述 */
+            li ~ li {
+                &::before {
+                    content: "｜";
+                }
+            }
+        }
+    }
+    small {
+        color: $footer-text;
+        font-size: .9rem;
+    }
+}

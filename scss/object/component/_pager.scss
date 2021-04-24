@@ -1,0 +1,55 @@
+.c-pager {
+    width: 80%;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    @include tab {
+        width: 100%;
+        margin: 50px auto;
+    }
+    @include sp {
+        justify-content: space-between;
+        margin: 30px 0;
+    }
+    p {
+        margin: 0 5px;
+        font-size: 1.3rem;
+        color: $pager-text;
+    }
+    &__fraction {
+        font-weight: bold;
+        @include sp {
+            display: none;
+        }
+    }
+    &__sp {
+        display: none;
+        @include sp {
+            display: inline-block;
+        }
+    }
+    ul {
+        display: flex;
+        flex-direction: row;
+        li {
+            padding: 10px;
+            margin: 0 6px;
+            font-size: 1.3rem;
+            color: $pager-text;
+            border: solid 2px #707070;
+            &:first-child {
+                color: white;
+                background-color: #3C2B1C; //先頭のみ色を変えている
+            }
+            @include tab {
+                padding: 7px;
+                margin: 0 5px;
+            }
+            @include sp {
+                display: none;
+            }
+        }
+    }
+}

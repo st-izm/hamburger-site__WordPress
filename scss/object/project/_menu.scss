@@ -1,0 +1,31 @@
+.p-menu {
+    list-style-type: none;
+    &__food {
+        li {
+            margin: 40px 0 40px 0;
+            a {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: $gray;
+                text-decoration: none;
+            }
+            .sub-menu {
+                margin-top: 30px;
+                li {
+                    a {
+                        margin: 12px 0 12px 14px;
+                        font-size: 1.5rem;
+                        font-weight: normal;
+                        color: $gray;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*
+WordPress化の作業でクラス名を一部変更
+.sub-menuはWordPressが吐き出すクラス名
+.p-menuと&__foodは関数wp_nav_menuのデフォルトを変えてクラス名を対応
+*/

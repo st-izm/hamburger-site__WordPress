@@ -1,0 +1,41 @@
+.c-button {
+    &--sideMenu {
+        display: none;
+        position: fixed;
+        top: 18px;
+        right: 26px;
+        z-index: 9; // サイドメニューは10
+        font-size: 3.2rem;
+        font-weight: bold;
+        color: $gray;
+        background-color: #FFF7EF;
+        border: solid 1px #bdb7b0;
+        border-radius: 5px;
+        cursor: pointer;
+
+        @include tab {
+        display: block;
+        &:hover {
+            background-color: #ccc9c3;
+        }
+        }
+        @include sp {
+        font-size: 1.8rem;
+        top: 14px;
+        right: 15px;
+        }
+    }
+    &--archive-content-detail {
+        width: 40%;
+        height: 15%;
+        margin: 0 auto;
+        font-size: 1.3rem;
+        border-radius: 25px;
+        background-color: white;
+        @include sp {
+            width: 60%;
+            padding: 9px;
+            margin: 20px auto;
+        }
+    }
+}

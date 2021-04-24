@@ -1,0 +1,14 @@
+$tab: 960px; // PCとタブレットの間のブレイクポイント
+$sp: 600px; // タブレットとスマートフォンの間のブレイクポイント
+
+@mixin tab {
+    @media screen and (max-width: $tab) {
+        @content;
+    }
+}
+
+@mixin sp {
+    @media screen and (max-width: $sp) {
+        @content;
+    }
+}

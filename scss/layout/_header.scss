@@ -1,0 +1,17 @@
+.l-header {
+    position: relative;
+    height: 210px;
+    line-height: 210px;
+    width: 100%;
+    background-color: $header-bkg-color;
+    display: inline-block;
+
+    @include tab {
+        height: 217px;
+        line-height: normal;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+}

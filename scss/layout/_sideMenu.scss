@@ -1,0 +1,51 @@
+.l-sideMenu {
+    position: relative;
+    width: 20%;
+    align-self: stretch; /*footerの手前までsideMenuの領域を伸ばすため*/
+    padding-top: 82px;
+    padding-left: 3%;
+    padding-bottom: 300px;
+    background-color: $sideMenu-bkg-color;
+
+    @include tab {
+        width: 350px;
+        height: 100vh; // 表示画面領域外に出た箇所をスクロール表示させるために、100vhとしている
+        padding-left: 5%;
+        position: fixed; // 表示画面領域外に出た場合スクロールさせるためのプロパティ
+        top: 0;
+        right: -350px;
+        z-index: 10;
+        display: none;
+        overflow-y: scroll;
+    }
+    @include sp {
+        width: 250px;
+    }
+    .js-close {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        font-size: 5.0rem;
+        color: $gray;
+        cursor: pointer;
+        display: none;
+        @include tab {
+            display: block;
+        }
+    }
+    &.is-open {
+        display: block;
+        right: 0px;
+        animation: fadeIn 0.3s linear 0s;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateX(350px); //サイドバーをスライドさせる為の記述
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}

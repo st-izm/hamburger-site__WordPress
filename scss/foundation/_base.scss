@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+/*右側にはみ出した部分まで横スクロールバーが表示される問題を解消するための記述*/
+html {
+    overflow: auto;
+    font-size: 10px;
+}
+
+body {
+    background-color: #FFFDFA;
+    overflow: hidden;
+}
+/*横スクロールバー問題解消ここまで*/
+
+
+img {
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+}

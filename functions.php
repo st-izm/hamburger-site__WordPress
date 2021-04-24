@@ -1,0 +1,48 @@
+<?php
+    //テーマサポート
+    add_theme_support( 'menus' );
+    add_theme_support( 'title-tag' );
+    add_theme_support( 'post-thumbnails' );
+
+    //タイトル出力
+    function hamburger_title( $title ) {
+        if ( is_front_page() && is_home() ) { //トップページなら
+            $title = get_bloginfo( 'name', 'display' );
+        } elseif ( is_singular() ) { //シングルページなら
+            $title = single_post_title( '', false );
+        }
+            return $title;
+        }
+    add_filter( 'pre_get_document_title', 'hamburger_title' );
+    
+    function hamburger_script() {
+        //wp_enqueue_style( 'mplus1p', '//fonts.googleapis.com/earlyaccess/mplus1p.css', array() ); //不要かもしれない
+        //wp_enqueue_style( 'Sacramento', '//fonts.googleapis.com/css?family=Sacramento&amp;amp;subset=latin-ext', array() ); //不要かもしれない
+        wp_enqueue_style( 'font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css', array(), '4.0.3' ); //修正済
+        //wp_enqueue_style( 'hamburger', get_template_directory_uri() . '/css/wpbeg.css', array(), '1.0.0' ); //おかしいが何に修正すべきか分からない もしかすると不要?
+        wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', array(), '1.0.0' ); //
+        wp_enqueue_script( 'script', get_template_directory_uri() . '/js/script.js', array(), '1.0.0', true ); //多分あってるはず
+    }
+    add_action( 'wp_enqueue_scripts', 'hamburger_script' );
+
+    //ウィジェット追加
+    function wpbeg_widgets_init() {
+        register_sidebar (
+            array(
+                'name'          => 'カテゴリーウィジェット',
+                'id'            => 'category_widget',
+                'description'   => 'カテゴリー用ウィジェットです',
+                'before_widget' => '<div id="%1$s" class="widget %2$s">',
+                'after_widget'  => '</div>',
+                'before_title'  => '<h2><i class="fa fa-folder-open" aria-hidden="true"></i>',
+                'after_title'   => "</h2>\n",
+            )
+        );
+    }
+    add_action( 'widgets_init', 'wpbeg_widgets_init' );
+
+    // テーマフォルダ直下のeditor-style.cssを読み込み
+    add_action('admin_init',function(){
+    add_editor_style();
+    });
+?>
