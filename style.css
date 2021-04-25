@@ -624,7 +624,6 @@ ul {
 
 .p-mainVisual {
   position: relative;
-  height: 400px;
   width: 100%;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -988,16 +987,6 @@ WordPress化の作業でクラス名を一部変更
   min-height: 200px;
   margin: 10px auto;
   overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   background-color: #3C2B1C;
 }
 
@@ -1011,9 +1000,42 @@ WordPress化の作業でクラス名を一部変更
   }
 }
 
+.p-archive__article__contents a {
+  margin-top: 0;
+  min-height: 200px;
+  display: block;
+  text-decoration: none;
+}
+
+.p-archive__article__contents__wrap {
+  height: 100%;
+  min-height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media screen and (max-width: 600px) {
+  .p-archive__article__contents__wrap {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .p-archive__article__contents__image {
   width: 100%;
   text-align: center;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
 }
 
 .p-archive__article__contents__image img {
@@ -1044,8 +1066,16 @@ WordPress化の作業でクラス名を一部変更
   }
 }
 
+.p-archive__article__contents__image p {
+  margin: 5vw 0;
+  font-size: 1.0rem;
+  color: white;
+}
+
 .p-archive__article__contents__description {
   padding: 20px 25px;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
