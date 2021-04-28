@@ -36,12 +36,11 @@ $the_query = new WP_Query( array(
             <?php get_template_part( 'search', 'archive' ); ?> <!-- get_template_part();で search-archive.php のテンプレートファイルを参照にするよう指定した。 -->
             <?php wp_link_pages( 'before=<div class="c-pager">&after=</div>' ); ?>
         <?php endwhile; ?>
-        <?php wp_pagenavi(); ?>
-        <?php wp_reset_postdata(); ?>
         <?php else : ?>
             <a>検索結果がありません</a>  
     <?php endif; ?>
-
+<?php wp_pagenavi(array('query'=>$the_query)); ?>
+<?php wp_reset_postdata(); ?>
 <p>以上試作コード　以下保存コード</p>
 
 <!-- 投稿の検索結果表示のループ処理 -->
