@@ -3,8 +3,8 @@
 
         <div class="p-archive-mainVisual">
             <div class="p-archive-mainVisual__mask">
-                <h1 class="c-titles--archiveTop">Menu：</h1>
-                <p class="c-titles--archiveTop__search">チーズバーガー</p>
+                <?php $category_slug = get_query_var('category_name'); ?> <!-- スラッグの取得はできたが、名前(日本語)の表示方法が分からない -->
+                <h1 class="c-titles--archiveTop"><?php printf( __( 'カテゴリー : %s', 'altitude' ), '<span>' . $category_slug . '</span>' ); ?></h1>
             </div>
         </div>
         <section class="p-archive">
@@ -12,6 +12,24 @@
                 <dt class="p-archive__top__title">小見出しが入ります</dt>
                 <dd class="p-archive__top__description">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</dd>
             </dl>
+
+<!-- ループ処理試し書き これから編集 -->
+            <?php
+            $_query = new WP_Query(
+                array(
+                    'post_type'      => 'post',
+                    'posts_per_page' => 5,
+                )
+            );
+            ?>
+            <?php if ( have_posts() ) : ?>
+                <?php while ( have_posts() ) : ?>
+                    <?php the_post(); ?>
+                        <?php get_template_part( 'search', 'archive' ); ?> <!-- get_template_part();で search-archive.php のテンプレートファイルを参照にするよう指定した。 -->
+                <?php endwhile; ?>
+            <?php endif; ?>
+
+<!-- コンテンツ箇所　後で消す -->
             <article class="p-archive__article">
                 <ul>
                     <li class="p-archive__article__contents">

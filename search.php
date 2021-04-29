@@ -41,7 +41,8 @@ $the_query = new WP_Query( array(
     <?php endif; ?>
 <?php wp_pagenavi(array('query'=>$the_query)); ?>
 <?php wp_reset_postdata(); ?>
-<p>以上試作コード　以下保存コード</p>
+
+<p>以上編集中コード　以下保存コード</p>
 
 <!-- 投稿の検索結果表示のループ処理 -->
     <?php if ( have_posts() ) : ?>
@@ -51,6 +52,9 @@ $the_query = new WP_Query( array(
         <?php else : ?>
             <a>検索結果がありません</a>  
     <?php endif; ?>
+
+
+<!-- ページャー（後で消す） -->
         <div class="c-pager">
             <p class="c-pager__fraction">page 1/10</p>
             <p>＜＜<span class="c-pager__sp">前へ</span></p>
