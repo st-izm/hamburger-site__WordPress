@@ -15,7 +15,7 @@
 
 <!-- ループ処理試し書き これから編集 -->
             <?php
-            $_query = new WP_Query(
+            $the_query = new WP_Query(
                 array(
                     'post_type'      => 'post',
                     'posts_per_page' => 5,
@@ -28,9 +28,11 @@
                         <?php get_template_part( 'search', 'archive' ); ?> <!-- get_template_part();で search-archive.php のテンプレートファイルを参照にするよう指定した。 -->
                 <?php endwhile; ?>
             <?php endif; ?>
+        <?php wp_pagenavi(array('query'=>$the_query)); ?>
+        <?php wp_reset_postdata(); ?>
 
 <!-- コンテンツ箇所　後で消す -->
-            <article class="p-archive__article">
+            <!-- <article class="p-archive__article">
                 <ul>
                     <li class="p-archive__article__contents">
                         <div class="p-archive__article__contents__image">
@@ -88,7 +90,7 @@
                     <li>9</li>
                 </ul>
                 <p>＞＞<span class="c-pager__sp">次へ</span></p>
-            </div>
+            </div> -->
         </section>
     </article>
     <?php get_sidebar(); ?>
