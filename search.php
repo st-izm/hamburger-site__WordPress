@@ -28,12 +28,11 @@ $the_query = new WP_Query( array(
     'posts_per_page' => 5,
 ));
 ?>
-<?php if ( $the_query->have_posts() ) : ?>
+<?php if ( have_posts() ) : ?>
 
 <!-- 投稿の検索結果表示のループ処理 -->
-        <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+        <?php while ( have_posts() ) : the_post(); ?>
             <?php get_template_part( 'search', 'archive' ); ?> <!-- get_template_part();で search-archive.php のテンプレートファイルを参照にするよう指定した。 -->
-            <?php wp_link_pages( 'before=<div class="c-pager">&after=</div>' ); ?>
         <?php endwhile; ?>
         <?php else : ?>
             <a>検索結果がありません</a>
@@ -41,19 +40,7 @@ $the_query = new WP_Query( array(
 <?php wp_pagenavi(array('query'=>$the_query)); ?>
 <?php wp_reset_postdata(); ?>
 
-<p>以上編集中コード　以下保存コード</p>
-
-<!-- 投稿の検索結果表示のループ処理 -->
-    <?php if ( have_posts() ) : ?>
-        <?php while ( have_posts() ) : the_post(); ?>
-            <?php get_template_part( 'search', 'archive' ); ?> <!-- get_template_part();で search-archive.php のテンプレートファイルを参照にするよう指定した。 -->
-        <?php endwhile; ?>
-        <?php else : ?>
-            <a>検索結果がありません</a>  
-    <?php endif; ?>
-
-
-<!-- ページャー（後で消す） -->
+<!-- ページャー（後で消す）
         <div class="c-pager">
             <p class="c-pager__fraction">page 1/10</p>
             <p>＜＜<span class="c-pager__sp">前へ</span></p>
@@ -69,7 +56,7 @@ $the_query = new WP_Query( array(
                 <li>9</li>
             </ul>
             <p>＞＞<span class="c-pager__sp">次へ</span></p>
-        </div>
+        </div>  -->
     </article>
 </section>
 <!--sideMenu (sidebar)-->
