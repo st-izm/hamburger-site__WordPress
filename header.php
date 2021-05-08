@@ -7,6 +7,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <meta name="description" content="ページの内容を表す文章///WordPressを利用したハンバーガー屋さんのサイトです" />
     <meta name="keywords" content="WordPress, Theme, practice">
+    
     <?php wp_head(); ?> <!-- WordPressのテーマに含める関数 -->
 </head>
 
@@ -16,7 +17,9 @@
     <article class="l-main__left">
         <!-- Header Start -->
         <header class="l-header">
-            <h1 class="c-titles c-titles--header" href="<?php echo home_url( '/' ); ?>"><?php bloginfo( 'name' ); ?></h1>
+            <a href="<?php echo home_url( '/' ); ?>">
+                <h1 class="c-titles c-titles--header" href=""><?php bloginfo( 'name' ); ?></h1>
+            </a>
             <div class="p-search">
                 <?php get_search_form(); ?>
             </div>

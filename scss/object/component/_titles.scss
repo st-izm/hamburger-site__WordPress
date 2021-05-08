@@ -3,7 +3,6 @@
    
    /* Header
    ----------------------------------------------------------------- */
-
    &--header {
       margin-left: 4.0%;
       float: left;
@@ -11,6 +10,7 @@
       color: $gray;
       @include tab {
          font-size: 5.3rem;
+         float: none;
       }
       @include sp {
          font-size: 4.0rem;

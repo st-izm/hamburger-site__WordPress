@@ -4,45 +4,49 @@
         </div>
         <section class="p-main-menu">
             <ul class="l-main__front-page-contents">
-                <li class="p-front-page-card p-front-page-card1"> <!--TakeOut-->
-                    <div>
-                        <h3 class="c-titles c-titles--front-page-card">Take Out</h3>
-                        <hr>
-                    </div>
-                    <div class="p-frontpage-card__explanation">
-                        <div class="p-front-page-card__explanation__text">
-                            <dl>
-                                <dt>小見出しが入ります</dt>
-                                <dd>テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。</dd>
-                            </dl>
+                <li class="p-front-page-card p-front-page-card1"> <!--TakeOut カテゴリーID=7 -->
+                    <a href="<?php echo get_category_link( 7 ); ?>">
+                        <div>
+                            <h3 class="c-titles c-titles--front-page-card">Take Out</h3>
+                            <hr>
                         </div>
-                        <div class="p-front-page-card__explanation__text">
-                            <dl>
-                                <dt>小見出しが入ります</dt>
-                                <dd>テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。</dd>
-                            </dl>
+                        <div class="p-frontpage-card__explanation">
+                            <div class="p-front-page-card__explanation__text">
+                                <dl>
+                                    <dt>小見出しが入ります</dt>
+                                    <dd>テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。</dd>
+                                </dl>
+                            </div>
+                            <div class="p-front-page-card__explanation__text">
+                                <dl>
+                                    <dt>小見出しが入ります</dt>
+                                    <dd>テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。</dd>
+                                </dl>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </li>
-                <li class="p-front-page-card p-front-page-card2"> <!--Eat In-->
-                    <div>
-                        <h3 class="c-titles c-titles--front-page-card">Eat In</h3>
-                        <hr>
-                    </div>
-                    <div class="p-frontpage-card__explanation">
-                        <div class="p-front-page-card__explanation__text">
-                            <dl>
-                                <dt>小見出しが入ります</dt>
-                                <dd>テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。</dd>
-                            </dl>
+                <li class="p-front-page-card p-front-page-card2"> <!--Eat In カテゴリーID=6 -->
+                    <a href="<?php echo get_category_link( 6 ); ?>">
+                        <div>
+                            <h3 class="c-titles c-titles--front-page-card">Eat In</h3>
+                            <hr>
                         </div>
-                        <div class="p-front-page-card__explanation__text">
-                            <dl>
-                                <dt>小見出しが入ります</dt>
-                                <dd>テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。</dd>
-                            </dl>
+                        <div class="p-frontpage-card__explanation">
+                            <div class="p-front-page-card__explanation__text">
+                                <dl>
+                                    <dt>小見出しが入ります</dt>
+                                    <dd>テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。</dd>
+                                </dl>
+                            </div>
+                            <div class="p-front-page-card__explanation__text">
+                                <dl>
+                                    <dt>小見出しが入ります</dt>
+                                    <dd>テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。テキストが⼊ります。</dd>
+                                </dl>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </li>
             </ul>
         </section>

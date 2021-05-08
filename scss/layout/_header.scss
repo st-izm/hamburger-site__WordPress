@@ -6,6 +6,10 @@
     background-color: $header-bkg-color;
     display: inline-block;
 
+    a {
+        text-decoration: none;
+    }
+
     @include tab {
         height: 217px;
         line-height: normal;
