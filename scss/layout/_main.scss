@@ -16,6 +16,11 @@
             flex-direction: column;
         }
     }
+    /* 404.phpに対する記述 */
+    &__404text {
+        margin: 10vw 10vw;
+        font-size: 1.5rem;
+    }
 }
 
 // サイドメニュー開閉時のフェード用設定

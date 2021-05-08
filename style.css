@@ -101,7 +101,11 @@ input, select {
   vertical-align: middle;
 }
 
-/* ボタンタグの装飾を消すための追記 */
+/* 以下追記の事項 */
+a {
+  text-decoration: none;
+}
+
 button {
   background-color: transparent;
   border: none;
@@ -242,6 +246,7 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  /* 404.phpに対する記述 */
 }
 
 .l-main__left {
@@ -277,6 +282,11 @@ ul {
         -ms-flex-direction: column;
             flex-direction: column;
   }
+}
+
+.l-main__404text {
+  margin: 10vw 10vw;
+  font-size: 1.5rem;
 }
 
 .js-fade-layer {
@@ -447,6 +457,7 @@ ul {
 @media screen and (max-width: 960px) {
   .c-titles--header {
     font-size: 5.3rem;
+    float: none;
   }
 }
 
@@ -526,9 +537,15 @@ ul {
   }
 }
 
-.c-pager {
+/*
+wp_pagenavi との整合
+Page Navigationスタイルは使用せず、c-pager.scssを使用
+FLOCSSでの記述は元データとして最後に残している
+*/
+.wp-pagenavi {
   width: 80%;
   margin: 100px auto;
+  padding: 10px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -542,86 +559,179 @@ ul {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  font-size: 1.6rem;
 }
 
 @media screen and (max-width: 960px) {
-  .c-pager {
+  .wp-pagenavi {
     width: 100%;
     margin: 50px auto;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .c-pager {
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+  .wp-pagenavi {
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
     margin: 30px 0;
   }
 }
 
-.c-pager p {
-  margin: 0 5px;
-  font-size: 1.3rem;
+.wp-pagenavi span {
   color: #707070;
+  font-size: 1.6rem;
 }
 
-.c-pager__fraction {
+.wp-pagenavi .pages {
+  margin: 0 5px;
   font-weight: bold;
 }
 
+.wp-pagenavi .pages::before {
+  padding-right: 10px;
+  content: "page";
+}
+
 @media screen and (max-width: 600px) {
-  .c-pager__fraction {
+  .wp-pagenavi .pages {
     display: none;
   }
 }
 
-.c-pager__sp {
+.wp-pagenavi__sp {
   display: none;
 }
 
 @media screen and (max-width: 600px) {
-  .c-pager__sp {
+  .wp-pagenavi__sp {
     display: inline-block;
   }
 }
 
-.c-pager ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
-.c-pager ul li {
+.wp-pagenavi .current {
   padding: 10px;
   margin: 0 6px;
-  font-size: 1.3rem;
-  color: #707070;
-  border: solid 2px #707070;
-}
-
-.c-pager ul li:first-child {
   color: white;
   background-color: #3C2B1C;
 }
 
 @media screen and (max-width: 960px) {
-  .c-pager ul li {
+  .wp-pagenavi .current {
     padding: 7px;
     margin: 0 5px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .c-pager ul li {
+  .wp-pagenavi .current {
     display: none;
   }
 }
 
+.wp-pagenavi .page {
+  padding: 10px;
+  margin: 0 6px;
+  color: #707070;
+  border: solid 2px #707070;
+}
+
+@media screen and (max-width: 960px) {
+  .wp-pagenavi .page {
+    padding: 7px;
+    margin: 0 5px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wp-pagenavi .page {
+    display: none;
+  }
+}
+
+.wp-pagenavi .nextpostslink {
+  margin: 0 10px;
+  font-size: 2.8rem;
+  color: #707070;
+}
+
+@media screen and (max-width: 600px) {
+  .wp-pagenavi .nextpostslink::before {
+    margin-right: 3vw;
+    content: "次へ";
+  }
+}
+
+.wp-pagenavi .previouspostslink {
+  margin: 0 10px;
+  font-size: 2.8rem;
+  color: #707070;
+}
+
+@media screen and (max-width: 600px) {
+  .wp-pagenavi .previouspostslink::after {
+    margin-left: 3vw;
+    content: "前へ";
+  }
+}
+
+/* ページャーのCSS(編集前元データ)
+.c-pager {
+    width: 80%;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    @include tab {
+        width: 100%;
+        margin: 50px auto;
+    }
+    @include sp {
+        justify-content: space-between;
+        margin: 30px 0;
+    }
+    p {
+        margin: 0 5px;
+        font-size: 1.3rem;
+        color: $pager-text;
+    }
+    &__fraction {
+        font-weight: bold;
+        @include sp {
+            display: none;
+        }
+    }
+    &__sp {
+        display: none;
+        @include sp {
+            display: inline-block;
+        }
+    }
+    ul {
+        display: flex;
+        flex-direction: row;
+        li {
+            padding: 10px;
+            margin: 0 6px;
+            font-size: 1.3rem;
+            color: $pager-text;
+            border: solid 2px #707070;
+            &:first-child {
+                color: white;
+                background-color: #3C2B1C;
+            }
+            @include tab {
+                padding: 7px;
+                margin: 0 5px;
+            }
+            @include sp {
+                display: none;
+            }
+        }
+    }
+}
+*/
 .p-mainVisual {
   position: relative;
   width: 100%;
@@ -635,6 +745,7 @@ ul {
 }
 
 .p-mainVisual--single {
+  height: 400px;
   overflow: hidden;
 }
 
@@ -650,6 +761,9 @@ ul {
   left: 50%;
   -webkit-transform: translateY(-50%) translateX(-50%);
           transform: translateY(-50%) translateX(-50%);
+  -o-object-fit: contain;
+     object-fit: contain;
+  /* 画像の縦横比維持 */
 }
 
 .p-mainVisual--single h1 {
@@ -669,17 +783,16 @@ ul {
 }
 
 .p-map {
+  position: relative;
   max-width: 100%;
   height: 500px;
-  background-image: url("image/map_image.png");
-  background-repeat: no-repeat;
-  background-size: cover;
   background-color: rgba(0, 0, 0, 0.6);
 }
 
 @media screen and (max-width: 960px) {
   .p-map {
     height: auto;
+    min-height: 400px;
   }
 }
 
@@ -689,7 +802,20 @@ ul {
   }
 }
 
+.p-map iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 400px;
+  background-color: #fff;
+  opacity: 0.6;
+}
+
 .p-map__description {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 60%;
   padding: 5% 8%;
@@ -820,6 +946,18 @@ WordPress化の作業でクラス名を一部変更
   height: 800px;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 600px) {
+  .p-front-page-card {
+    max-width: 100%;
+    height: 630px;
+    margin: 8px 0;
+  }
+}
+
+.p-front-page-card a {
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -830,14 +968,7 @@ WordPress化の作業でクラス名を一部変更
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-@media screen and (max-width: 600px) {
-  .p-front-page-card {
-    max-width: 100%;
-    height: 630px;
-    margin: 8px 0;
-  }
+  text-decoration: none;
 }
 
 .p-front-page-card hr {

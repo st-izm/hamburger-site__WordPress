@@ -101,8 +101,14 @@ input, select {
     vertical-align:middle;
 }
 
+/* 以下追記の事項 */
 
-/* ボタンタグの装飾を消すための追記 */
+// aタグのtext-decoration
+a {
+    text-decoration: none;
+}
+
+// ボタンタグの装飾を消すための追記
 button{
     background-color: transparent;
     border: none;

@@ -13,68 +13,26 @@
                 <dd class="p-archive__top__description">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</dd>
             </dl>
 
-<!-- ループ処理試し書き これから編集 -->
+<!-- ここからループ処理 -->
             <?php
-            $the_query = new WP_Query(
-                array(
-                    'post_type'      => 'post',
-                    'posts_per_page' => 5,
-                )
-            );
+            $paged = get_query_var('paged')? get_query_var('paged') : 1;
+            $the_query = new WP_Query( array(
+                'post_type'      => 'post',
+                'paged' => $paged,
+                'post_status'    => 'publish'
+            ));
             ?>
             <?php if ( have_posts() ) : ?>
-                <?php while ( have_posts() ) : ?>
-                    <?php the_post(); ?>
-                        <?php get_template_part( 'search', 'archive' ); ?> <!-- get_template_part();で search-archive.php のテンプレートファイルを参照にするよう指定した。 -->
+                <?php while ( have_posts() ) :  the_post(); ?>
+                    <?php get_template_part( 'search', 'archive' ); ?> <!-- get_template_part();で search-archive.php のテンプレートファイルを参照にするよう指定した。 -->
                 <?php endwhile; ?>
+                <?php else : ?>
+                    <a>表示する結果がありません</a>
             <?php endif; ?>
-        <?php wp_pagenavi(array('query'=>$the_query)); ?>
-        <?php wp_reset_postdata(); ?>
+            <?php if(function_exists('wp_pagenavi')) { wp_pagenavi(array('query' => $the_query)); } ?>
+            <?php wp_reset_postdata(); ?>
 
-<!-- コンテンツ箇所　後で消す -->
-            <!-- <article class="p-archive__article">
-                <ul>
-                    <li class="p-archive__article__contents">
-                        <div class="p-archive__article__contents__image">
-                            <img src=" image/archivepage/archive_article_contents_image.png " alt="チーズバーガー">
-                        </div>
-                        <div class="p-archive__article__contents__description">
-                            <h3>チーズバーガー</h3>
-                            <dl>
-                                <dt>小見出しが入ります</dt>
-                                <dd>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</dd>
-                            </dl>
-                            <button class="c-button--archive-content-detail">詳しく見る</button>
-                        </div>
-                    </li>
-                    <li class="p-archive__article__contents">
-                        <div class="p-archive__article__contents__image">
-                            <img src=" image/archivepage/archive_article_contents_image.png " alt="ダブルチーズバーガー">
-                        </div>
-                        <div class="p-archive__article__contents__description">
-                            <h3>ダブルチーズバーガー</h3>
-                            <dl>
-                                <dt>小見出しが入ります</dt>
-                                <dd>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</dd>
-                            </dl>
-                            <button class="c-button--archive-content-detail">詳しく見る</button>
-                        </div>
-                    </li>
-                    <li class="p-archive__article__contents">
-                        <div class="p-archive__article__contents__image">
-                            <img src=" image/archivepage/archive_article_contents_image.png " alt="スペシャルチーズバーガー">
-                        </div>
-                        <div class="p-archive__article__contents__description">
-                            <h3>スペシャルチーズバーガー</h3>
-                            <dl>
-                                <dt>小見出しが入ります</dt>
-                                <dd>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</dd>
-                            </dl>
-                            <button class="c-button--archive-content-detail">詳しく見る</button>
-                        </div>
-                    </li>
-                </ul>
-            </article>
+<!-- コンテンツ箇所　後で消す
             <div class="c-pager">
                 <p class="c-pager__fraction">page 1/10</p>
                 <p>＜＜<span class="c-pager__sp">前へ</span></p>
@@ -90,7 +48,7 @@
                     <li>9</li>
                 </ul>
                 <p>＞＞<span class="c-pager__sp">次へ</span></p>
-            </div> -->
+            </div>  -->
         </section>
     </article>
     <?php get_sidebar(); ?>

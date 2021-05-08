@@ -17,7 +17,7 @@
     <article class="l-main__left">
         <!-- Header Start -->
         <header class="l-header">
-            <a href="<?php echo home_url( '/' ); ?>">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
                 <h1 class="c-titles c-titles--header" href=""><?php bloginfo( 'name' ); ?></h1>
             </a>
             <div class="p-search">

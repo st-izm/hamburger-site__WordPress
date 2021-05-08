@@ -1,3 +1,98 @@
+/*
+wp_pagenavi との整合
+Page Navigationスタイルは使用せず、c-pager.scssを使用
+FLOCSSでの記述は元データとして最後に残している
+*/
+.wp-pagenavi {
+    width: 80%;
+    margin: 100px auto;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    @include tab {
+        width: 100%;
+        margin: 50px auto;
+    }
+    @include sp {
+        justify-content: space-evenly; //スマホ表示時のページャー配置調整
+        margin: 30px 0;
+    }
+    span {
+        color: $pager-text;
+        font-size: 1.6rem;
+    }
+    .pages {
+        margin: 0 5px;
+        font-weight: bold;
+        &::before {
+            padding-right: 10px;
+            content: "page";
+        }
+        @include sp {
+            display: none;
+        }
+    }
+    &__sp {
+        display: none;
+        @include sp {
+            display: inline-block;
+        }
+    }
+    .current {
+        padding: 10px;
+        margin: 0 6px;
+        color: white;
+        background-color: #3C2B1C;
+        @include tab {
+            padding: 7px;
+            margin: 0 5px;
+        }
+        @include sp {
+            display: none;
+        }
+    }
+    .page {
+        padding: 10px;
+        margin: 0 6px;
+        color: $pager-text;
+        border: solid 2px #707070;
+        @include tab {
+            padding: 7px;
+            margin: 0 5px;
+        }
+        @include sp {
+            display: none;
+        }
+    }
+    .nextpostslink {
+        margin: 0 10px;
+        font-size: 2.8rem;
+        color: $pager-text;
+        @include sp {
+            &::before {
+                margin-right: 3vw;
+                content: "次へ";
+            }
+        }
+    }
+    .previouspostslink {
+        margin: 0 10px;
+        font-size: 2.8rem;
+        color: $pager-text;
+        @include sp {
+            &::after {
+                margin-left: 3vw;
+                content: "前へ";
+            }
+        }
+    }
+}
+
+
+/* ページャーのCSS(編集前元データ)
 .c-pager {
     width: 80%;
     margin: 100px auto;
@@ -41,7 +136,7 @@
             border: solid 2px #707070;
             &:first-child {
                 color: white;
-                background-color: #3C2B1C; //先頭のみ色を変えている
+                background-color: #3C2B1C;
             }
             @include tab {
                 padding: 7px;
@@ -53,63 +148,4 @@
         }
     }
 }
-
-/* wp_pagenavi との整合 */
-
-.wp-pagenavi {
-    width: 80%;
-    margin: 100px auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    @include tab {
-        width: 100%;
-        margin: 50px auto;
-    }
-    @include sp {
-        justify-content: space-between;
-        margin: 30px 0;
-    }
-    span {
-        margin: 0 5px;
-        font-size: 1.3rem;
-        color: $pager-text;
-    }
-    .pages {
-        font-weight: bold;
-        @include sp {
-            display: none;
-        }
-    }
-    &__sp {
-        display: none;
-        @include sp {
-            display: inline-block;
-        }
-    }
-
-    .current {
-        color: white;
-        background-color: #3C2B1C; //先頭のみ色を変えている
-    }
-
-    & a {
-        display: flex;
-        flex-direction: row;
-        li {
-            padding: 10px;
-            margin: 0 6px;
-            font-size: 1.3rem;
-            color: $pager-text;
-            border: solid 2px #707070;
-            @include tab {
-                padding: 7px;
-                margin: 0 5px;
-            }
-            @include sp {
-                display: none;
-            }
-        }
-    }
-}
+*/
