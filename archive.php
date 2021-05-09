@@ -29,7 +29,7 @@
                 <?php else : ?>
                     <a>表示する結果がありません</a>
             <?php endif; ?>
-            <?php if(function_exists('wp_pagenavi')) { wp_pagenavi(array('query' => $the_query)); } ?>
+            <?php if(function_exists('wp_pagenavi')) { wp_pagenavi(array()); } ?>
             <?php wp_reset_postdata(); ?>
 
 <!-- コンテンツ箇所　後で消す
