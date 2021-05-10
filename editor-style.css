@@ -1,11 +1,41 @@
 @charset "UTF-8";
+
 /*
-html5doctor.com Reset Stylesheet
-v1.6.1
-Last Updated: 2010-09-17
-Author: Richard Clark - http://richclarkdesign.com
-Twitter: @rich_clark
+1:function.phpにeditor-style。cssを読み込む記述を行う
+2:style.cssのエディターに適用させるべきcss記述をコピー&ペースト
+3:エディターのクラス名前を調べる
+  今回の場合
+  Gutenbergエディターの編集箇所class="block-editor-block-list__layout"
+  Sassのclass="p-single"
+4:editor-style.cssのクラス名を置き換える
+  Tips...[Command]+[Shift]+[L]キーでカーソル位置と同じ単語を全選択できる
 */
+
+/*
+このファイル内のセクション構成
+1.editor-style.css用の追記
+2.style.cssのコピペ(.p-singleを除く)
+3.コンテンツ部分のCSS クラス名編集済
+*/
+
+/* ----------------------- */
+/* editor-style.css用の追記 */
+/* ----------------------- */
+ul li {
+  list-style: none;
+}
+.block-editor-block-list__layout > ul li ul {
+  padding-bottom: 5%;
+}
+.block-editor-block-list__layout > ol li ol {
+  padding-bottom: 5%;
+}
+/* 追記ここまで */
+
+
+/* --------------- */
+/* style.cssのコピペ */
+/* --------------- */
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -101,7 +131,11 @@ input, select {
   vertical-align: middle;
 }
 
-/* ボタンタグの装飾を消すための追記 */
+/* 以下追記の事項 */
+a {
+  text-decoration: none;
+}
+
 button {
   background-color: transparent;
   border: none;
@@ -186,7 +220,7 @@ ul {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  /* メニュー同士の間に仕切り垂直線を入れるための隣接セレクタを利用したCSS */
+  /* メニュー同士の間に仕切り垂直線を入れるための隣接セレクタを利用した記述 */
 }
 
 .l-footer__sitemap ul li {
@@ -242,6 +276,7 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  /* 404.phpに対する記述 */
 }
 
 .l-main__left {
@@ -277,6 +312,11 @@ ul {
         -ms-flex-direction: column;
             flex-direction: column;
   }
+}
+
+.l-main__404text {
+  margin: 10vw 10vw;
+  font-size: 1.5rem;
 }
 
 .js-fade-layer {
@@ -447,6 +487,7 @@ ul {
 @media screen and (max-width: 960px) {
   .c-titles--header {
     font-size: 5.3rem;
+    float: none;
   }
 }
 
@@ -507,28 +548,34 @@ ul {
   }
 }
 
-.c-titles--archiveTop__search {
+.c-titles--archiveTop span {
   font-size: 2.8rem;
   font-weight: bold;
   color: white;
 }
 
 @media screen and (max-width: 960px) {
-  .c-titles--archiveTop__search {
+  .c-titles--archiveTop span {
     font-size: 2.3rem;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .c-titles--archiveTop__search {
-    margin-left: 5%;
+  .c-titles--archiveTop span {
+    display: block;
     font-size: 1.5rem;
   }
 }
 
-.c-pager {
+/*
+wp_pagenavi との整合
+Page Navigationスタイルは使用せず、c-pager.scssを使用
+FLOCSSでの記述は元データとして最後に残している
+*/
+.wp-pagenavi {
   width: 80%;
   margin: 100px auto;
+  padding: 10px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -542,89 +589,185 @@ ul {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  font-size: 1.6rem;
 }
 
 @media screen and (max-width: 960px) {
-  .c-pager {
+  .wp-pagenavi {
     width: 100%;
     margin: 50px auto;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .c-pager {
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+  .wp-pagenavi {
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
     margin: 30px 0;
   }
 }
 
-.c-pager p {
-  margin: 0 5px;
-  font-size: 1.3rem;
+.wp-pagenavi span {
   color: #707070;
+  font-size: 1.6rem;
 }
 
-.c-pager__fraction {
+.wp-pagenavi .pages {
+  margin: 0 5px;
   font-weight: bold;
 }
 
+.wp-pagenavi .pages::before {
+  padding-right: 10px;
+  content: "page";
+}
+
 @media screen and (max-width: 600px) {
-  .c-pager__fraction {
+  .wp-pagenavi .pages {
     display: none;
   }
 }
 
-.c-pager__sp {
+.wp-pagenavi__sp {
   display: none;
 }
 
 @media screen and (max-width: 600px) {
-  .c-pager__sp {
+  .wp-pagenavi__sp {
     display: inline-block;
   }
 }
 
-.c-pager ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
-.c-pager ul li {
+.wp-pagenavi .current {
   padding: 10px;
   margin: 0 6px;
-  font-size: 1.3rem;
-  color: #707070;
-  border: solid 2px #707070;
-}
-
-.c-pager ul li:first-child {
   color: white;
   background-color: #3C2B1C;
 }
 
 @media screen and (max-width: 960px) {
-  .c-pager ul li {
+  .wp-pagenavi .current {
     padding: 7px;
     margin: 0 5px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .c-pager ul li {
+  .wp-pagenavi .current {
     display: none;
   }
 }
 
+.wp-pagenavi .page {
+  padding: 10px;
+  margin: 0 6px;
+  color: #707070;
+  border: solid 2px #707070;
+}
+
+@media screen and (max-width: 960px) {
+  .wp-pagenavi .page {
+    padding: 7px;
+    margin: 0 5px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wp-pagenavi .page {
+    display: none;
+  }
+}
+
+.wp-pagenavi .nextpostslink, .wp-pagenavi .previouspostslink, .wp-pagenavi .first, .wp-pagenavi .last {
+  margin: 0 10px;
+  font-size: 2.8rem;
+  color: #707070;
+}
+
+@media screen and (max-width: 600px) {
+  .wp-pagenavi .nextpostslink::before, .wp-pagenavi .previouspostslink::before, .wp-pagenavi .first::before, .wp-pagenavi .last::before {
+    margin-right: 3vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wp-pagenavi .nextpostslink::before {
+    content: "次へ";
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wp-pagenavi .previouspostslink::after {
+    content: "前へ";
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wp-pagenavi .extend {
+    display: none;
+  }
+}
+
+/* ページャーの参考用CSS(編集前元データ)
+.c-pager {
+    width: 80%;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    @include tab {
+        width: 100%;
+        margin: 50px auto;
+    }
+    @include sp {
+        justify-content: space-between;
+        margin: 30px 0;
+    }
+    p {
+        margin: 0 5px;
+        font-size: 1.3rem;
+        color: $pager-text;
+    }
+    &__fraction {
+        font-weight: bold;
+        @include sp {
+            display: none;
+        }
+    }
+    &__sp {
+        display: none;
+        @include sp {
+            display: inline-block;
+        }
+    }
+    ul {
+        display: flex;
+        flex-direction: row;
+        li {
+            padding: 10px;
+            margin: 0 6px;
+            font-size: 1.3rem;
+            color: $pager-text;
+            border: solid 2px #707070;
+            &:first-child {
+                color: white;
+                background-color: #3C2B1C;
+            }
+            @include tab {
+                padding: 7px;
+                margin: 0 5px;
+            }
+            @include sp {
+                display: none;
+            }
+        }
+    }
+}
+*/
 .p-mainVisual {
   position: relative;
-  height: 400px;
   width: 100%;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -635,25 +778,30 @@ ul {
   background-image: url("image/frontpage/frontpage_image.png");
 }
 
-.p-mainVisual--single {
+.p-mainVisual--single, .p-mainVisual--page {
+  height: 400px;
   overflow: hidden;
 }
 
 @media screen and (max-width: 600px) {
-  .p-mainVisual--single {
+  .p-mainVisual--single, .p-mainVisual--page {
     height: 45vw;
   }
 }
 
-.p-mainVisual--single img {
+.p-mainVisual--single img, .p-mainVisual--page img {
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translateY(-50%) translateX(-50%);
           transform: translateY(-50%) translateX(-50%);
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* 画像の縦横比維持しながらメインビジュアルを覆う画像を配置 */
+  width: 100%;
 }
 
-.p-mainVisual--single h1 {
+.p-mainVisual--single h1, .p-mainVisual--page h1 {
   position: absolute;
   top: 50%;
   left: 5%;
@@ -664,23 +812,22 @@ ul {
 }
 
 @media screen and (max-width: 600px) {
-  .p-mainVisual--single h1 {
+  .p-mainVisual--single h1, .p-mainVisual--page h1 {
     font-size: 2.8rem;
   }
 }
 
 .p-map {
+  position: relative;
   max-width: 100%;
   height: 500px;
-  background-image: url("image/map_image.png");
-  background-repeat: no-repeat;
-  background-size: cover;
   background-color: rgba(0, 0, 0, 0.6);
 }
 
 @media screen and (max-width: 960px) {
   .p-map {
     height: auto;
+    min-height: 400px;
   }
 }
 
@@ -690,7 +837,20 @@ ul {
   }
 }
 
+.p-map iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 400px;
+  background-color: #fff;
+  opacity: 0.6;
+}
+
 .p-map__description {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 60%;
   padding: 5% 8%;
@@ -821,6 +981,18 @@ WordPress化の作業でクラス名を一部変更
   height: 800px;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 600px) {
+  .p-front-page-card {
+    max-width: 100%;
+    height: 630px;
+    margin: 8px 0;
+  }
+}
+
+.p-front-page-card a {
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -831,14 +1003,7 @@ WordPress化の作業でクラス名を一部変更
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-@media screen and (max-width: 600px) {
-  .p-front-page-card {
-    max-width: 100%;
-    height: 630px;
-    margin: 8px 0;
-  }
+  text-decoration: none;
 }
 
 .p-front-page-card hr {
@@ -878,7 +1043,7 @@ WordPress化の作業でクラス名を一部変更
 .p-archive-mainVisual {
   width: 100%;
   height: 283px;
-  background-image: url("../../../image/archivepage/archiveTop_image.png");
+  background-image: url("image/archivepage/archiveTop_image.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
@@ -988,16 +1153,6 @@ WordPress化の作業でクラス名を一部変更
   min-height: 200px;
   margin: 10px auto;
   overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   background-color: #3C2B1C;
 }
 
@@ -1011,9 +1166,42 @@ WordPress化の作業でクラス名を一部変更
   }
 }
 
+.p-archive__article__contents a {
+  margin-top: 0;
+  min-height: 200px;
+  display: block;
+  text-decoration: none;
+}
+
+.p-archive__article__contents__wrap {
+  height: 100%;
+  min-height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media screen and (max-width: 600px) {
+  .p-archive__article__contents__wrap {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .p-archive__article__contents__image {
   width: 100%;
   text-align: center;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
 }
 
 .p-archive__article__contents__image img {
@@ -1044,8 +1232,16 @@ WordPress化の作業でクラス名を一部変更
   }
 }
 
+.p-archive__article__contents__image p {
+  margin: 5vw 0;
+  font-size: 1.0rem;
+  color: white;
+}
+
 .p-archive__article__contents__description {
   padding: 20px 25px;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1102,163 +1298,116 @@ WordPress化の作業でクラス名を一部変更
   font-size: 1.0rem;
   line-height: 1.4rem;
 }
+/* style.cssのコピペここまで */
 
-.p-single {
+
+/* ------------------------------ */
+/* 以下コンテンツ部分のCSS クラス名編集済 */
+/* ------------------------------ */
+
+.block-editor-block-list__layout {
   padding: 5% 5%;
   color: #3C2A10;
 }
 
-.p-single h2, .p-single h3, .p-single h4, .p-single h5, .p-single h6, .p-single p, .p-single blockquote, .p-single div, .p-single ul, .p-single table, .p-single button {
+.block-editor-block-list__layout h2, .block-editor-block-list__layout h3, .block-editor-block-list__layout h4, .block-editor-block-list__layout h5, .block-editor-block-list__layout h6, .block-editor-block-list__layout block-editor-block-list__layout  p, .block-editor-block-list__layout blockquote, .block-editor-block-list__layout div, .block-editor-block-list__layout ul, .block-editor-block-list__layout ol, .block-editor-block-list__layout table, .block-editor-block-list__layout button {
   margin: 4% 0;
 }
 
 @media screen and (max-width: 600px) {
-  .p-single h2, .p-single h3, .p-single h4, .p-single h5, .p-single h6, .p-single p, .p-single blockquote, .p-single div, .p-single ul, .p-single table, .p-single button {
+  .block-editor-block-list__layout h2, .block-editor-block-list__layout h3, .block-editor-block-list__layout h4, .block-editor-block-list__layout h5, .block-editor-block-list__layout h6, .block-editor-block-list__layout block-editor-block-list__layout  p, .block-editor-block-list__layout blockquote, .block-editor-block-list__layout div, .block-editor-block-list__layout ul, .block-editor-block-list__layout ol, .block-editor-block-list__layout table, .block-editor-block-list__layout button {
     margin: 6% 0;
   }
 }
 
-.p-single h2 {
+.block-editor-block-list__layout h2 {
   font-size: 4.0rem;
 }
 
-.p-single h3 {
+.block-editor-block-list__layout h3 {
   font-size: 3.3rem;
 }
 
-.p-single h4 {
+.block-editor-block-list__layout h4 {
   font-size: 2.8rem;
 }
 
-.p-single h5 {
+.block-editor-block-list__layout h5 {
   font-size: 2.0rem;
 }
 
-.p-single h6 {
+.block-editor-block-list__layout h6 {
   font-size: 1.5rem;
 }
 
-.p-single p {
+.block-editor-block-list__layout block-editor-block-list__layout  p {
   font-size: 1.3rem;
   line-height: 1.8rem;
 }
 
 @media screen and (max-width: 600px) {
-  .p-single h2 {
+  .block-editor-block-list__layout h2 {
     font-size: 2.8rem;
   }
-  .p-single h3 {
+  .block-editor-block-list__layout h3 {
     font-size: 2.6rem;
   }
-  .p-single h4 {
+  .block-editor-block-list__layout h4 {
     font-size: 2.3rem;
   }
-  .p-single h5 {
+  .block-editor-block-list__layout h5 {
     font-size: 1.7rem;
   }
-  .p-single h6 {
+  .block-editor-block-list__layout h6 {
     font-size: 1.3rem;
   }
-  .p-single p {
+  .block-editor-block-list__layout block-editor-block-list__layout  p {
     font-size: 1.0rem;
   }
 }
 
-.p-single blockquote {
+.block-editor-block-list__layout blockquote {
   padding: 3%;
   background-color: #F5F5F5;
 }
 
 @media screen and (max-width: 600px) {
-  .p-single blockquote p {
+  .block-editor-block-list__layout blockquote.block-editor-block-list__layout  p {
     padding: 2%;
   }
 }
 
-.p-single__image--wide {
+.block-editor-block-list__layout table {
   width: 100%;
 }
 
-.p-single__image--normal {
-  width: 50%;
-  display: block;
-  margin: 0 auto;
-}
-
-@media screen and (max-width: 960px) {
-  .p-single__image--normal {
-    width: 80%;
-  }
-}
-
-.p-single table {
-  width: 100%;
-}
-
-.p-single table tr {
+.block-editor-block-list__layout table tr {
   height: 70px;
 }
 
-.p-single table tr td {
+.block-editor-block-list__layout table tr td {
   padding-left: 4%;
   line-height: 70px;
   font-size: 1.4rem;
   border: solid 1px #707070;
 }
 
-.p-single table tr td:first-child {
+.block-editor-block-list__layout table tr td:first-child {
   width: 30%;
 }
 
-.p-single button {
-  width: 40%;
-  height: 80px;
-  border: solid 1px #707070;
-  border-radius: 20px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#F2EDE9), to(#DED8D3));
-  background: linear-gradient(#F2EDE9, #DED8D3);
+.block-editor-block-list__layout ol {
+  list-style-position: inside;
 }
 
-@media screen and (max-width: 960px) {
-  .p-single button {
-    width: 300px;
-  }
+.block-editor-block-list__layout .wp-block-image img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
-@media screen and (max-width: 600px) {
-  .p-single button {
-    width: 100%;
-    max-width: 400px;
-    display: block;
-    margin: 0 auto;
-  }
-}
-
-.p-single__twocolum {
-  margin: 4% 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-}
-
-.p-single__twocolum img {
-  width: 40%;
-  display: block;
-}
-
-.p-single__twocolum p {
-  margin-top: 0;
-  padding: 0 3%;
-}
-
-.p-single__grid {
+.block-editor-block-list__layout .wp-block-gallery .blocks-gallery-grid {
   margin: 4% 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1274,54 +1423,99 @@ WordPress化の作業でクラス名を一部変更
       flex-wrap: wrap;
 }
 
-.p-single__grid img {
+.block-editor-block-list__layout .wp-block-gallery .blocks-gallery-grid li {
   width: 31%;
   margin: 1%;
 }
 
 @media screen and (max-width: 960px) {
-  .p-single__grid img {
+  .block-editor-block-list__layout .wp-block-gallery .blocks-gallery-grid li {
     width: 47%;
+    max-width: 47%;
     margin: 1%;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .p-single__grid img {
+  .block-editor-block-list__layout .wp-block-gallery .blocks-gallery-grid li {
     width: 100%;
     max-width: 500px;
   }
 }
 
-.p-single__list {
-  padding-left: 5%;
-}
-
-.p-single__list__indent1 {
-  padding-left: 2%;
-}
-
-.p-single__list ul li {
+.block-editor-block-list__layout > ul li {
   font-size: 1.2rem;
 }
 
 @media screen and (max-width: 600px) {
-  .p-single__list ul li {
+  .block-editor-block-list__layout > ul li {
     font-size: 1.0rem;
   }
 }
 
-.p-single__code {
-  padding-left: 4%;
+.block-editor-block-list__layout > ul li ul {
+  padding-left: 5%;
+}
+
+.block-editor-block-list__layout > ol li {
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .block-editor-block-list__layout > ol li {
+    font-size: 1.0rem;
+  }
+}
+
+.block-editor-block-list__layout > ol li ol {
+  padding-left: 5%;
+}
+
+.block-editor-block-list__layout .wp-block-code {
+  padding: 4% 4%;
   font-size: 1.4rem;
   line-height: 1.8rem;
   background-color: #F5F5F5;
 }
 
 @media screen and (max-width: 600px) {
-  .p-single__code {
+  .block-editor-block-list__layout .wp-block-code {
     font-size: 1.1rem;
     line-height: 1.2rem;
   }
 }
-/*# sourceMappingURL=style.css.map */
+
+.block-editor-block-list__layout .wp-block-buttons .wp-block-button {
+  width: 40%;
+  height: 80px;
+  border: solid 1px #707070;
+  border-radius: 20px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#F2EDE9), to(#DED8D3));
+  background: linear-gradient(#F2EDE9, #DED8D3);
+  text-align: center;
+}
+
+@media screen and (max-width: 960px) {
+  .block-editor-block-list__layout .wp-block-buttons .wp-block-button {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .block-editor-block-list__layout .wp-block-buttons .wp-block-button {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.block-editor-block-list__layout .wp-block-buttons .wp-block-button .wp-block-button__link {
+  display: block;
+  height: 100%;
+  line-height: 55px;
+  border: none;
+  font-size: 1.6rem;
+}
+
+/* コンテンツ部分のCSS クラス名編集済 ここまで */

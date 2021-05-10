@@ -18,7 +18,8 @@
             top: 50%;
             left: 50%;
             transform: translateY(-50%) translateX(-50%);
-            object-fit: contain; /* 画像の縦横比維持 */
+            object-fit: cover; /* 画像の縦横比維持しながらメインビジュアルを覆う画像を配置 */
+            width: 100%;
         }
         h1 {
             position: absolute;

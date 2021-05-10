@@ -765,9 +765,10 @@ FLOCSSでの記述は元データとして最後に残している
   left: 50%;
   -webkit-transform: translateY(-50%) translateX(-50%);
           transform: translateY(-50%) translateX(-50%);
-  -o-object-fit: contain;
-     object-fit: contain;
-  /* 画像の縦横比維持 */
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* 画像の縦横比維持しながらメインビジュアルを覆う画像を配置 */
+  width: 100%;
 }
 
 .p-mainVisual--single h1, .p-mainVisual--page h1 {
@@ -1274,12 +1275,12 @@ WordPress化の作業でクラス名を一部変更
   /* WordPressのエディターの吐き出すCSSとの整合のための追記 */
 }
 
-.p-single h2, .p-single h3, .p-single h4, .p-single h5, .p-single h6, .p-single p, .p-single blockquote, .p-single div, .p-single ul, .p-single table, .p-single button {
+.p-single h2, .p-single h3, .p-single h4, .p-single h5, .p-single h6, .p-single p, .p-single blockquote, .p-single div, .p-single ul, .p-single ol, .p-single table, .p-single button {
   margin: 4% 0;
 }
 
 @media screen and (max-width: 600px) {
-  .p-single h2, .p-single h3, .p-single h4, .p-single h5, .p-single h6, .p-single p, .p-single blockquote, .p-single div, .p-single ul, .p-single table, .p-single button {
+  .p-single h2, .p-single h3, .p-single h4, .p-single h5, .p-single h6, .p-single p, .p-single blockquote, .p-single div, .p-single ul, .p-single ol, .p-single table, .p-single button {
     margin: 6% 0;
   }
 }
@@ -1341,22 +1342,6 @@ WordPress化の作業でクラス名を一部変更
   }
 }
 
-.p-single__image--wide {
-  width: 100%;
-}
-
-.p-single__image--normal {
-  width: 50%;
-  display: block;
-  margin: 0 auto;
-}
-
-@media screen and (max-width: 960px) {
-  .p-single__image--normal {
-    width: 80%;
-  }
-}
-
 .p-single table {
   width: 100%;
 }
@@ -1376,119 +1361,8 @@ WordPress化の作業でクラス名を一部変更
   width: 30%;
 }
 
-.p-single button {
-  width: 40%;
-  height: 80px;
-  border: solid 1px #707070;
-  border-radius: 20px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#F2EDE9), to(#DED8D3));
-  background: linear-gradient(#F2EDE9, #DED8D3);
-}
-
-@media screen and (max-width: 960px) {
-  .p-single button {
-    width: 300px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .p-single button {
-    width: 100%;
-    max-width: 400px;
-    display: block;
-    margin: 0 auto;
-  }
-}
-
-.p-single__twocolum {
-  margin: 4% 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-}
-
-.p-single__twocolum img {
-  width: 40%;
-  display: block;
-}
-
-.p-single__twocolum p {
-  margin-top: 0;
-  padding: 0 3%;
-}
-
-.p-single__grid {
-  margin: 4% 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
-.p-single__grid img {
-  width: 31%;
-  margin: 1%;
-}
-
-@media screen and (max-width: 960px) {
-  .p-single__grid img {
-    width: 47%;
-    margin: 1%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .p-single__grid img {
-    width: 100%;
-    max-width: 500px;
-  }
-}
-
-.p-single__list {
-  padding-left: 5%;
-}
-
-.p-single__list__indent1 {
-  padding-left: 2%;
-}
-
-.p-single__list ul li {
-  font-size: 1.2rem;
-}
-
-@media screen and (max-width: 600px) {
-  .p-single__list ul li {
-    font-size: 1.0rem;
-  }
-}
-
-.p-single__code {
-  padding-left: 4%;
-  font-size: 1.4rem;
-  line-height: 1.8rem;
-  background-color: #F5F5F5;
-}
-
-@media screen and (max-width: 600px) {
-  .p-single__code {
-    font-size: 1.1rem;
-    line-height: 1.2rem;
-  }
+.p-single ol {
+  list-style-position: inside;
 }
 
 .p-single .wp-block-image img {
@@ -1498,7 +1372,7 @@ WordPress化の作業でクラス名を一部変更
      object-fit: contain;
 }
 
-.p-single .wp-block-gallery-grid {
+.p-single .wp-block-gallery .blocks-gallery-grid {
   margin: 4% 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1514,22 +1388,98 @@ WordPress化の作業でクラス名を一部変更
       flex-wrap: wrap;
 }
 
-.p-single .wp-block-gallery-grid li figure img {
+.p-single .wp-block-gallery .blocks-gallery-grid li {
   width: 31%;
   margin: 1%;
 }
 
 @media screen and (max-width: 960px) {
-  .p-single .wp-block-gallery-grid li figure img {
+  .p-single .wp-block-gallery .blocks-gallery-grid li {
     width: 47%;
+    max-width: 47%;
     margin: 1%;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .p-single .wp-block-gallery-grid li figure img {
+  .p-single .wp-block-gallery .blocks-gallery-grid li {
     width: 100%;
     max-width: 500px;
   }
+}
+
+.p-single > ul li {
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .p-single > ul li {
+    font-size: 1.0rem;
+  }
+}
+
+.p-single > ul li ul {
+  padding-left: 5%;
+}
+
+.p-single > ol li {
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .p-single > ol li {
+    font-size: 1.0rem;
+  }
+}
+
+.p-single > ol li ol {
+  padding-left: 5%;
+}
+
+.p-single .wp-block-code {
+  padding: 4% 4%;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  background-color: #F5F5F5;
+}
+
+@media screen and (max-width: 600px) {
+  .p-single .wp-block-code {
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+  }
+}
+
+.p-single .wp-block-buttons .wp-block-button {
+  width: 40%;
+  height: 80px;
+  border: solid 1px #707070;
+  border-radius: 20px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#F2EDE9), to(#DED8D3));
+  background: linear-gradient(#F2EDE9, #DED8D3);
+  text-align: center;
+}
+
+@media screen and (max-width: 960px) {
+  .p-single .wp-block-buttons .wp-block-button {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .p-single .wp-block-buttons .wp-block-button {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.p-single .wp-block-buttons .wp-block-button .wp-block-button__link {
+  display: block;
+  height: 100%;
+  line-height: 55px;
+  border: none;
+  font-size: 1.6rem;
 }
 /*# sourceMappingURL=style.css.map */

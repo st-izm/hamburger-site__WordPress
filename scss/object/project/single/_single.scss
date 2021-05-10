@@ -1,7 +1,7 @@
 .p-single {
     padding: 5% 5%;
     color: $single-text-color;
-    h2, h3, h4, h5, h6, p, blockquote, div, ul, table, button {
+    h2, h3, h4, h5, h6, p, blockquote, div, ul, ol, table, button {
         margin: 4% 0;
         @include sp {
             margin: 6% 0;
@@ -55,19 +55,6 @@
             }
         }
     }
-    &__image {
-        &--wide {
-            width: 100%;
-        }
-        &--normal {
-            width: 50%;
-            display: block;
-            margin: 0 auto;
-            @include tab {
-                width: 80%;
-            }
-        }
-    }
     table {
         width: 100%;
         tr {
@@ -83,78 +70,8 @@
             }
         }
     }
-    button {
-        width: 40%;
-        height: 80px;
-        border: solid 1px #707070;
-        border-radius: 20px;
-        background: linear-gradient(#F2EDE9,#DED8D3);
-        @include tab {
-            width: 300px;
-        }
-        @include sp {
-            width: 100%;
-            max-width: 400px;
-            display: block;
-            margin: 0 auto;
-        }
-    }
-    &__twocolum {
-        margin: 4% 0;
-        display: flex;
-        flex-direction: row;
-        align-items:flex-start;
-        img {
-            width: 40%;
-            display: block;
-        }
-        p {
-            margin-top: 0;
-            padding: 0 3%;
-        }
-    }
-    &__grid {
-        margin: 4% 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        img {
-            width: 31%;
-            margin: 1%;
-            @include tab {
-                width: 47%;
-                margin: 1%;
-            }
-            @include sp {
-                width: 100%;
-                max-width: 500px;
-            }
-        }
-    }
-    &__list {
-        padding-left: 5%;
-        &__indent1 {
-            padding-left: 2%;
-        }
-        ul {
-            li {
-                font-size: 1.2rem;
-                @include sp {
-                    font-size: 1.0rem;
-                }
-            }
-        }
-    }
-    &__code {
-        padding-left: 4%;
-        font-size: 1.4rem;
-        line-height: 1.8rem;
-        background-color: #F5F5F5;
-        @include sp {
-            font-size: 1.1rem;
-            line-height: 1.2rem;
-        }
+    ol {
+        list-style-position: inside;
     }
 
     /* WordPressのエディターの吐き出すCSSとの整合のための追記 */
@@ -166,27 +83,82 @@
         }
     }
     .wp-block-gallery {
-        &-grid {
+        .blocks-gallery-grid {
             margin: 4% 0;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             flex-wrap: wrap;
             li {
-                figure {
-                    img {
-                        width: 31%;
-                        margin: 1%;
-                        @include tab {
-                            width: 47%;
-                            margin: 1%;
-                        }
-                        @include sp {
-                            width: 100%;
-                            max-width: 500px;
-                        }
-                    }
+                width: 31%;
+                margin: 1%;
+                @include tab {
+                    width: 47%;
+                    max-width: 47%;
+                    margin: 1%;
                 }
+                @include sp {
+                    width: 100%;
+                    max-width: 500px;
+                }
+            }
+        }
+    }
+    > ul { // ギャラリー内のulなどを汚染しないために.p-single直下のulタグのみ指定する。
+        li {
+            font-size: 1.2rem;
+            @include sp {
+                font-size: 1.0rem;
+            }
+            ul {
+                padding-left: 5%;
+            }
+        }
+    }
+    > ol {
+        li {
+            font-size: 1.2rem;
+            @include sp {
+                font-size: 1.0rem;
+            }
+            ol {
+                padding-left: 5%;
+            }
+        }
+    }
+    .wp-block-code {
+        padding: 4% 4%;
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        background-color: #F5F5F5;
+        @include sp {
+            font-size: 1.1rem;
+            line-height: 1.2rem;
+        }
+    }
+    .wp-block-buttons {
+        .wp-block-button {
+            width: 40%;
+            height: 80px;
+            border: solid 1px #707070;
+            border-radius: 20px;
+            background: linear-gradient(#F2EDE9,#DED8D3);
+            text-align: center;
+            @include tab {
+                width: 300px;
+            }
+            @include sp {
+                width: 100%;
+                max-width: 400px;
+                display: block;
+                margin: 0 auto;
+            }
+            .wp-block-button__link {
+                display: block;
+                height: 100%;
+                line-height: 55px;
+                border: none;
+                font-size: 1.6rem;
             }
         }
     }
