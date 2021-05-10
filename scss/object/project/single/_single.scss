@@ -156,4 +156,38 @@
             line-height: 1.2rem;
         }
     }
+
+    /* WordPressのエディターの吐き出すCSSとの整合のための追記 */
+    .wp-block-image {
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+    .wp-block-gallery {
+        &-grid {
+            margin: 4% 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            li {
+                figure {
+                    img {
+                        width: 31%;
+                        margin: 1%;
+                        @include tab {
+                            width: 47%;
+                            margin: 1%;
+                        }
+                        @include sp {
+                            width: 100%;
+                            max-width: 500px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

@@ -41,6 +41,18 @@
     }
     add_action( 'widgets_init', 'wpbeg_widgets_init' );
 
+    //表示件数のコントロール
+    function change_posts_per_page($query) {
+        if ( is_admin() || ! $query->is_main_query() )
+            return;
+
+        /* 検索ページの時に表示件数を5件にセット */
+        if ( $query->is_search() ) {
+            $query->set( 'posts_per_page', '5' );
+        }
+    }
+    add_action( 'pre_get_posts', 'change_posts_per_page' );
+
     // テーマフォルダ直下のeditor-style.cssを読み込み
     add_action('admin_init',function(){
     add_editor_style();

@@ -1,7 +1,28 @@
 <?php get_header(); ?>
         <!-- Header  End-->
 
-        <div class="p-mainVisual p-mainVisual--single">
+        <?php
+    if( have_posts() ) :
+        while( have_posts() ) :
+            the_post(); ?>
+            <div class="p-mainVisual p-mainVisual--page">
+                <?php the_post_thumbnail(); ?>
+                <h1><?php the_title(); ?></h1>
+            </div>
+            <section class="p-single">
+                <?php the_content(); ?>
+            </section>
+        <?php endwhile;
+    else :
+    ?><p>表示する記事がありません</p><?php
+    endif; ?>
+
+    </article>
+
+
+
+<!--
+        <div class="p-mainVisual p-mainVisual--page">
             <img src="image/page/page_black-steel-lamp-post.png" alt="チーズバーガー">
             <h1>ショップについて</h1>
         </div>
@@ -103,7 +124,7 @@
             <p>boldboldboldboldboldboldbold</p>
         </section>
     </article>
-
+-->
     <!--sideMenu (sidebar)-->
 
     <?php get_sidebar(); ?>

@@ -8,7 +8,9 @@
                 <?php the_post_thumbnail(); ?>
                 <h1><?php the_title(); ?></h1>
             </div>
-            <?php the_content(); ?>
+            <section class="p-single">
+                <?php the_content(); ?>
+            </section>
         <?php endwhile;
     else :
     ?><p>表示する記事がありません</p><?php

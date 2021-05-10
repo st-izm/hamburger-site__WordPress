@@ -7,7 +7,7 @@
         line-height: 28vw;
         background-image: url( 'image/frontpage/frontpage_image.png' );
     }
-    &--single {
+    &--single, &--page {
         height: 400px;
         overflow: hidden;
         @include sp {

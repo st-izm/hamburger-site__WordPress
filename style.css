@@ -532,7 +532,7 @@ ul {
 
 @media screen and (max-width: 600px) {
   .c-titles--archiveTop span {
-    margin-left: 5%;
+    display: block;
     font-size: 1.5rem;
   }
 }
@@ -649,33 +649,37 @@ FLOCSSでの記述は元データとして最後に残している
   }
 }
 
-.wp-pagenavi .nextpostslink {
+.wp-pagenavi .nextpostslink, .wp-pagenavi .previouspostslink, .wp-pagenavi .first, .wp-pagenavi .last {
   margin: 0 10px;
   font-size: 2.8rem;
   color: #707070;
+}
+
+@media screen and (max-width: 600px) {
+  .wp-pagenavi .nextpostslink::before, .wp-pagenavi .previouspostslink::before, .wp-pagenavi .first::before, .wp-pagenavi .last::before {
+    margin-right: 3vw;
+  }
 }
 
 @media screen and (max-width: 600px) {
   .wp-pagenavi .nextpostslink::before {
-    margin-right: 3vw;
     content: "次へ";
   }
 }
 
-.wp-pagenavi .previouspostslink {
-  margin: 0 10px;
-  font-size: 2.8rem;
-  color: #707070;
-}
-
 @media screen and (max-width: 600px) {
   .wp-pagenavi .previouspostslink::after {
-    margin-left: 3vw;
     content: "前へ";
   }
 }
 
-/* ページャーのCSS(編集前元データ)
+@media screen and (max-width: 600px) {
+  .wp-pagenavi .extend {
+    display: none;
+  }
+}
+
+/* ページャーの参考用CSS(編集前元データ)
 .c-pager {
     width: 80%;
     margin: 100px auto;
@@ -744,18 +748,18 @@ FLOCSSでの記述は元データとして最後に残している
   background-image: url("image/frontpage/frontpage_image.png");
 }
 
-.p-mainVisual--single {
+.p-mainVisual--single, .p-mainVisual--page {
   height: 400px;
   overflow: hidden;
 }
 
 @media screen and (max-width: 600px) {
-  .p-mainVisual--single {
+  .p-mainVisual--single, .p-mainVisual--page {
     height: 45vw;
   }
 }
 
-.p-mainVisual--single img {
+.p-mainVisual--single img, .p-mainVisual--page img {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -766,7 +770,7 @@ FLOCSSでの記述は元データとして最後に残している
   /* 画像の縦横比維持 */
 }
 
-.p-mainVisual--single h1 {
+.p-mainVisual--single h1, .p-mainVisual--page h1 {
   position: absolute;
   top: 50%;
   left: 5%;
@@ -777,7 +781,7 @@ FLOCSSでの記述は元データとして最後に残している
 }
 
 @media screen and (max-width: 600px) {
-  .p-mainVisual--single h1 {
+  .p-mainVisual--single h1, .p-mainVisual--page h1 {
     font-size: 2.8rem;
   }
 }
@@ -1267,6 +1271,7 @@ WordPress化の作業でクラス名を一部変更
 .p-single {
   padding: 5% 5%;
   color: #3C2A10;
+  /* WordPressのエディターの吐き出すCSSとの整合のための追記 */
 }
 
 .p-single h2, .p-single h3, .p-single h4, .p-single h5, .p-single h6, .p-single p, .p-single blockquote, .p-single div, .p-single ul, .p-single table, .p-single button {
@@ -1483,6 +1488,48 @@ WordPress化の作業でクラス名を一部変更
   .p-single__code {
     font-size: 1.1rem;
     line-height: 1.2rem;
+  }
+}
+
+.p-single .wp-block-image img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.p-single .wp-block-gallery-grid {
+  margin: 4% 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.p-single .wp-block-gallery-grid li figure img {
+  width: 31%;
+  margin: 1%;
+}
+
+@media screen and (max-width: 960px) {
+  .p-single .wp-block-gallery-grid li figure img {
+    width: 47%;
+    margin: 1%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .p-single .wp-block-gallery-grid li figure img {
+    width: 100%;
+    max-width: 500px;
   }
 }
 /*# sourceMappingURL=style.css.map */

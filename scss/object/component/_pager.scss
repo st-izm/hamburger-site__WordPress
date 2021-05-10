@@ -67,32 +67,39 @@ FLOCSSでの記述は元データとして最後に残している
             display: none;
         }
     }
-    .nextpostslink {
+    .nextpostslink, .previouspostslink, .first, .last {
         margin: 0 10px;
         font-size: 2.8rem;
         color: $pager-text;
         @include sp {
             &::before {
                 margin-right: 3vw;
+            }
+        }
+    }
+    .nextpostslink {
+        @include sp {
+            &::before {
                 content: "次へ";
             }
         }
     }
     .previouspostslink {
-        margin: 0 10px;
-        font-size: 2.8rem;
-        color: $pager-text;
         @include sp {
             &::after {
-                margin-left: 3vw;
                 content: "前へ";
             }
+        }
+    }
+    .extend {
+        @include sp {
+            display: none;
         }
     }
 }
 
 
-/* ページャーのCSS(編集前元データ)
+/* ページャーの参考用CSS(編集前元データ)
 .c-pager {
     width: 80%;
     margin: 100px auto;
