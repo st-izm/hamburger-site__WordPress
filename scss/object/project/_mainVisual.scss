@@ -20,6 +20,7 @@
             transform: translateY(-50%) translateX(-50%);
             object-fit: cover; /* 画像の縦横比維持しながらメインビジュアルを覆う画像を配置 */
             width: 100%;
+            height: auto; //WordPressによって画像がずれるためheightを指定
         }
         h1 {
             position: absolute;

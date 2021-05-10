@@ -3,8 +3,15 @@
 <!-- 検索結果の検索ワード表示と上部小見出し -->
         <div class="p-archive-mainVisual">
             <div class="p-archive-mainVisual__mask">
-                <?php $category_slug = get_query_var('category_name'); ?> <!-- スラッグの取得はできたが、名前(日本語)の表示方法が分からない -->
-                <h1 class="c-titles--archiveTop"><?php printf( __( 'Menu : %s', 'altitude' ), '<span>' . $category_slug . '</span>' ); ?></h1>
+                <?php
+                //カテゴリーアーカイブページでカテゴリーIDを取得
+                $cat_id = get_query_var('cat');
+                //先ほど取得したカテゴリーIDをget_category()に渡す
+                $cat = get_category($cat_id);
+                //カテゴリーアーカイブページのカテゴリー名
+                $category_name = $cat->cat_name;
+                ?>
+                <h1 class="c-titles--archiveTop"><?php printf( __( 'Menu : %s', 'altitude' ), '<span>' . $category_name . '</span>' ); ?></h1>
             </div>
         </div>
         <section class="p-archive">
