@@ -10,6 +10,9 @@
             </div>
             <section class="p-single">
                 <?php the_content(); ?>
+                <div class="p-single__tagarea">
+                    <?php the_tags(); ?>
+                </div>
             </section>
         <?php endwhile;
     else :

@@ -41,6 +41,15 @@
     }
     add_action( 'widgets_init', 'wpbeg_widgets_init' );
 
+    //複数のナビゲーションメニューの設定
+    function register_hamburger_menus(){
+        register_nav_menus( array(
+            'side-menu'   => 'SideMenu',
+            'footer-menu' => 'FooterMenu',
+        ));
+    }
+    add_action( 'init', 'register_hamburger_menus');
+
     //表示件数のコントロール
     function change_posts_per_page($query) {
         if ( is_admin() || ! $query->is_main_query() )

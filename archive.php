@@ -11,7 +11,7 @@
                 //カテゴリーアーカイブページのカテゴリー名
                 $category_name = $cat->cat_name;
                 ?>
-                <h1 class="c-titles--archiveTop"><?php printf( __( 'Menu : %s', 'altitude' ), '<span>' . $category_name . '</span>' ); ?></h1>
+                <h1 class="c-titles--archiveTop"><?php printf( __( 'Menu : %s', 'hamburger' ), '<span>' . $category_name . '</span>' ); ?></h1>
             </div>
         </div>
         <section class="p-archive">

@@ -3,7 +3,7 @@
 <!-- 検索結果の検索ワード表示と上部小見出し -->
         <div class="p-archive-mainVisual">
             <div class="p-archive-mainVisual__mask">
-                <h1 class="c-titles--archiveTop"><?php printf( __( 'Search : %s', 'altitude' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+                <h1 class="c-titles--archiveTop"><?php printf( __( 'Search : %s', 'hamburger' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
             </div>
         </div>
         <section class="p-archive">
