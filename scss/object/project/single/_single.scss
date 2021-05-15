@@ -162,10 +162,21 @@
             }
         }
     }
-    &__tagarea {
+    &__tagarea, &__commentarea {
         font-size: 1.3rem;
         a {
             color: $single-text-color;
+        }
+    }
+    &__commentarea {
+        .comment-form-comment {
+            display: flex;
+            flex-direction: column;
+            max-width: 1000px;
+        }
+        .form-submit {
+            width: 10rem;
+            border-radius: 1.5rem;
         }
     }
 }

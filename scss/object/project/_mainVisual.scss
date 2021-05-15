@@ -1,11 +1,14 @@
 .p-mainVisual {
     position: relative;
     width: 100%;
-    background-repeat: no-repeat;
-    background-size: 100%;
+    // background-size: 100%;<?php echo get_custom_header()->height; ?><?php echo get_custom_header()->width; ?>
     &--index {
-        line-height: 28vw;
-        background-image: url( 'image/frontpage/frontpage_image.png' );
+        a {
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            transform: translate(0,-50%);
+        }
     }
     &--single, &--page {
         height: 400px;

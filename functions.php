@@ -1,6 +1,5 @@
 <?php
     //テーマサポート
-    add_theme_support( 'menus' );
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
 
@@ -16,12 +15,14 @@
     add_filter( 'pre_get_document_title', 'hamburger_title' );
     
     function hamburger_script() {
-        //wp_enqueue_style( 'mplus1p', '//fonts.googleapis.com/earlyaccess/mplus1p.css', array() ); //不要かもしれない
-        //wp_enqueue_style( 'Sacramento', '//fonts.googleapis.com/css?family=Sacramento&amp;amp;subset=latin-ext', array() ); //不要かもしれない
         wp_enqueue_style( 'font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css', array(), '4.0.3' ); //修正済
         //wp_enqueue_style( 'hamburger', get_template_directory_uri() . '/css/wpbeg.css', array(), '1.0.0' ); //おかしいが何に修正すべきか分からない もしかすると不要?
         wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', array(), '1.0.0' ); //
-        wp_enqueue_script( 'script', get_template_directory_uri() . '/js/script.js', array(), '1.0.0', true ); //多分あってるはず
+        wp_enqueue_script( 'script', get_template_directory_uri() . '/js/script.js', array(), '1.0.0', true );
+        //テーマチェック対策 コメント返信のスクリプト
+        if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+            wp_enqueue_script( 'comment-reply' );
+        } 
     }
     add_action( 'wp_enqueue_scripts', 'hamburger_script' );
 
@@ -62,6 +63,14 @@
     }
     add_action( 'pre_get_posts', 'change_posts_per_page' );
 
+    //カスタムヘッダー
+    $args = array(
+        'default-image' => get_template_directory_uri() . '/image/header.jpg',
+        'uploads'       => true,
+    );
+    add_theme_support( 'custom-header', $args );
+
+    add_editor_style();
     // テーマフォルダ直下のeditor-style.cssを読み込み
     add_action( 'enqueue_block_editor_assets', 'gutenberg_stylesheets_custom_demo' );
     function gutenberg_stylesheets_custom_demo() {
@@ -69,4 +78,13 @@
     $editor_style_url = get_theme_file_uri('/editor-style.css');
     wp_enqueue_style( 'theme-editor-style', $editor_style_url );
     }
+
+    //テーマチェック対策 コンテンツ幅の設定
+    if ( ! isset( $content_width ) ) $content_width = 1920;
+
+    //テーマチェック対策 自動フィードリンクの追加
+    add_theme_support( 'automatic-feed-links' );
+
+    //テーマチェック対策 カスタム背景の追加
+    add_theme_support( 'custom-background' );
 ?>

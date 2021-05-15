@@ -12,6 +12,7 @@
 </head>
 
 <body class="js-body" <?php body_class( $class ); ?>>
+<?php wp_body_open(); ?>
 <div class="js-fade-layer js-close"></div> <!--サイドメニューopen時暗くするフェード  このフェードをクリックしてもnavは閉じる-->
 <main class="l-main">
     <article class="l-main__left">
