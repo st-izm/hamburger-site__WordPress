@@ -45,8 +45,8 @@
     //複数のナビゲーションメニューの設定
     function register_hamburger_menus(){
         register_nav_menus( array(
-            'side-menu'   => 'SideMenu',
-            'footer-menu' => 'FooterMenu',
+            'side-menu'   => 'サイドメニュー',
+            'footer-menu' => 'フッターメニュー',
         ));
     }
     add_action( 'init', 'register_hamburger_menus');

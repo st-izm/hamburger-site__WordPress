@@ -2,12 +2,14 @@
 <footer class="l-footer">
     <div class="l-footer__sitemap">
         <?php
-        $footermenu = array(
-            'menu'            => 'footermenu',
-            'container'       => 'ul',
-            'theme_location'  => 'footer-menu',
-        );
-        wp_nav_menu( $footermenu );
+        if ( has_nav_menu('FooterMenu') ){
+            $footermenu = array(
+                'menu'            => 'footer-menu',
+                'container'       => 'ul',
+                'theme_location'  => 'footer-menu',
+            );
+            wp_nav_menu( $footermenu );
+            }
         ?>
     </div>
     <small>Copyright: RaiseTech</small>
