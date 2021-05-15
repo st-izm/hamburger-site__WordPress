@@ -1,7 +1,6 @@
 <?php get_header(); ?> <!-- //header.phpを読み込むテンプレートタグ（インクルードタグ） -->
         <div class="p-mainVisual p-mainVisual--index">
             <img src="<?php header_image(); ?>" height="" width="100%" alt="" />
-            
             <a class="c-titles--mainTop">ダミーサイト</a>
         </div>
         <section class="p-main-menu">

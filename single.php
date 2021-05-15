@@ -12,14 +12,14 @@
                 <?php the_content(); ?>
                 <?php
                 $defaults = array(
-                    'before'           => '<p>' . __( 'Pages:' ),
+                    'before'           => '<p>' . 'ページ:',
                     'after'            => '</p>',
                     'link_before'      => '',
                     'link_after'       => '',
                     'next_or_number'   => 'number',
                     'separator'        => ' ',
-                    'nextpagelink'     => __( '次のページへ' ),
-                    'previouspagelink' => __( '前のページへ' ),
+                    'nextpagelink'     => '次のページへ',
+                    'previouspagelink' => '前のページへ',
                     'pagelink'         => '%',
                     'echo'             => 1
                 );

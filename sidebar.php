@@ -5,13 +5,15 @@
             Menu
         </h2>
         <?php
-        $sidemenu = array(
-            'menu_class'      => 'p-menu__food',
-            'container'       => 'div',
-            'container_class' => 'p-menu',
-            'theme_location'  => 'side-menu',
-            );
-        wp_nav_menu( $sidemenu );
+            if ( has_nav_menu('side-menu') ){
+                $sidemenu = array(
+                    'menu_class'      => 'p-menu__food',
+                    'container'       => 'div',
+                    'container_class' => 'p-menu',
+                    'theme_location'  => 'side-menu',
+                    );
+                wp_nav_menu( $sidemenu );
+            }
         ?>
         <?php dynamic_sidebar(); ?> <!--テーマチェック対策用-->
     <!-- sideMenu End -->
