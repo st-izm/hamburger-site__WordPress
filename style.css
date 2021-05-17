@@ -2,19 +2,18 @@
 /*
 Theme Name: Hamburger
 Theme URI: http://example.com
-Author: Raisetech
-Author URI: https://raise-tech.net/
-Description: The 2021 theme for WordPress.
+Author: st-izm
+Author URI: https://github.com/st-izm
+Description: The 2020 theme for WordPress.
 Version: 1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: hamburger
+Text Domain: Hamburger
 Tags: food-and-drink
 
 Tested up to: 5.0
 Requires PHP: 7.4
 */
-
 
 /*
 html5doctor.com Reset Stylesheet
@@ -1449,14 +1448,18 @@ WordPress化の作業でクラス名を一部変更
   /* WordPressのエディターの吐き出すCSSとの整合のための追記 */
 }
 
-.p-single h2, .p-single h3, .p-single h4, .p-single h5, .p-single h6, .p-single p, .p-single blockquote, .p-single div, .p-single ul, .p-single ol, .p-single table, .p-single button {
+.p-single h1, .p-single h2, .p-single h3, .p-single h4, .p-single h5, .p-single h6, .p-single p, .p-single blockquote, .p-single div, .p-single ul, .p-single ol, .p-single table, .p-single button {
   margin: 4% 0;
 }
 
 @media screen and (max-width: 600px) {
-  .p-single h2, .p-single h3, .p-single h4, .p-single h5, .p-single h6, .p-single p, .p-single blockquote, .p-single div, .p-single ul, .p-single ol, .p-single table, .p-single button {
+  .p-single h1, .p-single h2, .p-single h3, .p-single h4, .p-single h5, .p-single h6, .p-single p, .p-single blockquote, .p-single div, .p-single ul, .p-single ol, .p-single table, .p-single button {
     margin: 6% 0;
   }
+}
+
+.p-single h1 {
+  font-size: 4.5rem;
 }
 
 .p-single h2 {
@@ -1485,6 +1488,9 @@ WordPress化の作業でクラス名を一部変更
 }
 
 @media screen and (max-width: 600px) {
+  .p-single h1 {
+    font-size: 3.0rem;
+  }
   .p-single h2 {
     font-size: 2.8rem;
   }
