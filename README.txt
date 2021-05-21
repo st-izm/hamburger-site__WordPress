@@ -1,4 +1,4 @@
-# hamburger-site
+=== Description ===
 This theme is for Raisetech assignment submission.
 
 Theme Name: Hamburger
